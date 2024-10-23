@@ -1,19 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { lazy } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const App = lazy(() => import("./App"));
+const Layout = lazy(() => import("./Pages/Layout"));
+const Register = lazy(() => import("./Pages/Register"));
+const NoPage = lazy(() => import("./Pages/NoPage"));
+const Profile = lazy(() => import("./Pages/Profile"));
+const Counter = lazy(() => import("./Pages/Counter"));
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<App />} />
+            <Route path="register" element={<Register />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="counter" element={<Counter />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </QueryClientProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
