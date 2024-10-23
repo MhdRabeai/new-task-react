@@ -1,6 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
 const Header = () => {
   return (
     <header className="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm mb-4">
@@ -180,8 +181,43 @@ const Header = () => {
                   </button>
                 </div>
               </div>
-              <button className="logout hs-dropdown-toggle hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600 font-medium dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500 ">
-                <CiLogin width="50" />
+              <div className="hs-dropdown relative inline-flex">
+                <button
+                  id="hs-dropdown-with-icons"
+                  type="button"
+                  className="hs-dropdown-toggle logout hs-dropdown-toggle hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600 font-medium dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-label="Dropdown"
+                >
+                  <CiLogout />
+                </button>
+
+                <div
+                  className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="hs-dropdown-with-icons"
+                >
+                  <div className="p-1 space-y-0.5">
+                    <Link
+                      className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                      to="/login"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                      to="/register"
+                    >
+                      Register
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              <button className="logout hs-dropdown-toggle hs-dark-mode group flex items-center text-gray-600 hover:text-[#991b1b] focus:outline-none  font-medium dark:text-[#b91c1c]  dark:hover:text-[#991b1b] ">
+                <CiLogin />
               </button>
             </div>
           </div>

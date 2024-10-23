@@ -20,7 +20,9 @@ function App() {
     window.HSStaticMethods.autoInit();
   }, [location.pathname]);
   return (
-    <div className="container px-0 md:px-5 mt-4 mx-2 md:mx-auto ">App</div>
+    <div className="container px-0 md:px-5 mt-4 mx-2 md:mx-auto dark:text-white">
+      App
+    </div>
   );
 }
 
