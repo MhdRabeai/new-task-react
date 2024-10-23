@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Link, Outlet } from "react-router-dom";
-import Header from "../Components/Header";
-import Loader from "../Components/Loader";
+import Header from "./Components/Header";
+import Loader from "./Components/Loader";
 
 const Layout = () => {
   return (

@@ -5,8 +5,8 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const App = lazy(() => import("./App"));
-const Layout = lazy(() => import("./Pages/Layout"));
+const Layout = lazy(() => import("./Layout"));
+const App = lazy(() => import("./Pages/App"));
 const Register = lazy(() => import("./Pages/Register"));
 const Login = lazy(() => import("./Pages/Login"));
 const NoPage = lazy(() => import("./Pages/NoPage"));
