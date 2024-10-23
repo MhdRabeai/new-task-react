@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const App = lazy(() => import("./App"));
 const Layout = lazy(() => import("./Pages/Layout"));
 const Register = lazy(() => import("./Pages/Register"));
+const Login = lazy(() => import("./Pages/Login"));
 const NoPage = lazy(() => import("./Pages/NoPage"));
 const Profile = lazy(() => import("./Pages/Profile"));
 const Counter = lazy(() => import("./Pages/Counter"));
@@ -23,6 +24,7 @@ root.render(
           <Route path="/" element={<Layout />}>
             <Route index element={<App />} />
             <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
             <Route path="profile" element={<Profile />} />
             <Route path="counter" element={<Counter />} />
             <Route path="*" element={<NoPage />} />
