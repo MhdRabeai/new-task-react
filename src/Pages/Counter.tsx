@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
 const Counter = () => {
   return (
@@ -8,4 +8,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default Counter as FunctionComponent;

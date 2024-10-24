@@ -1,20 +1,24 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
-const Header = () => {
+type UserProps = {
+  user: boolean;
+};
+
+const Header: FC<UserProps> = ({ user }) => {
   return (
-    <header className="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm mb-4">
+    <header className="sticky top-0 inset-x-0 flex flex-wrap justify-center md:flex-nowrap z-50 w-full text-sm mb-4">
       <nav className="mt-4 relative max-w-2xl w-full bg-white border border-gray-200 rounded-[2rem] mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto dark:bg-[#242424] dark:border-neutral-700">
         <div className="px-4 md:px-0 flex justify-between items-center">
           <div>
-            <a
+            <NavLink
               className="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80 text-blue-500"
-              href="#"
+              to={"/"}
               aria-label="Preline"
             >
               Mhd.
-            </a>
+            </NavLink>
           </div>
 
           <div className="md:hidden">
@@ -35,9 +39,9 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <line x1="3" x2="21" y1="6" y2="6" />
                 <line x1="3" x2="21" y1="12" y2="12" />
@@ -51,9 +55,9 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <path d="M18 6 6 18" />
                 <path d="m6 6 12 12" />
@@ -181,25 +185,30 @@ const Header = () => {
                   </button>
                 </div>
               </div>
-              <div className="hs-dropdown relative inline-flex">
-                <button
-                  id="hs-dropdown-with-icons"
-                  type="button"
-                  className="hs-dropdown-toggle logout hs-dropdown-toggle hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600 font-medium dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500"
-                  aria-haspopup="menu"
-                  aria-expanded="false"
-                  aria-label="Dropdown"
-                >
-                  <CiLogout />
-                </button>
 
-                <div
-                  className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="hs-dropdown-with-icons"
-                >
-                  <div className="p-1 space-y-0.5">
+              {user === true ? (
+                <div className="logout cursor-pointer  text-gray-600 hover:text-[#991b1b] focus:outline-none  font-medium dark:text-[#b91c1c]  dark:hover:text-[#991b1b] ">
+                  <CiLogin />
+                </div>
+              ) : (
+                <div className="hs-dropdown">
+                  <button
+                    id="hs-dropdown-with-icons"
+                    type="button"
+                    className="logout hs-dropdown-toggle hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600 font-medium dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500 "
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                    aria-label="Dropdown"
+                  >
+                    <CiLogout />
+                  </button>
+                  <div
+                    id="hs-dropdown-with-icons"
+                    className="hs-dropdown-menu hs-dropdown-open:opacity-100 mt-2 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mb-2 origin-bottom-left bg-white shadow-md rounded-lg p-1 space-y-0.5 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="hs-dropdown-with-icons"
+                  >
                     <Link
                       className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                       to="/login"
@@ -214,11 +223,7 @@ const Header = () => {
                     </Link>
                   </div>
                 </div>
-              </div>
-
-              <button className="logout hs-dropdown-toggle hs-dark-mode group flex items-center text-gray-600 hover:text-[#991b1b] focus:outline-none  font-medium dark:text-[#b91c1c]  dark:hover:text-[#991b1b] ">
-                <CiLogin />
-              </button>
+              )}
             </div>
           </div>
         </div>
