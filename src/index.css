@@ -15,3 +15,51 @@
     width: 25px;
     height: 25px;
   }
+ html.dark .Datepicker  input {
+  --tw-text-opacity: 1;
+    color: rgb(163 163 163 / var(--tw-text-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+    --tw-border-opacity: 1;
+    border-color: rgb(64 64 64 / 1);
+ 
+  }
+  html.dark .Datepicker  input:focus{
+   box-shadow: none;
+  }
+  .Datepicker  input {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    --tw-border-opacity: 1;
+    border-color: rgb(229 231 235 / var(--tw-border-opacity));
+    border-width: 1px;
+    border-radius: 0.5rem;
+    width: 100%;
+    /* display: flex; */
+    position: relative;
+    /* appearance: none; */
+
+  }
+  .Datepicker  input:focus{
+    --tw-ring-opacity: 1;
+    border-color: #3b82f6;
+  
+  }
+html:not(.dark)  .Datepicker  .absolute.z-50 > div{
+  background-color: #ddd;
+}
+  .Datepicker .mt-2.flex.space-x-2 button:first-of-type{
+    background-color: #3b82f6;
+    color: #fff;
+  
+  }
+  .Datepicker button:focus{
+    --tw-ring-opacity: 0;
+  }

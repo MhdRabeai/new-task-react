@@ -1,8 +1,10 @@
-import { FunctionComponent, useEffect } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { FunctionComponent, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "preline/preline";
 import { IStaticMethods } from "preline/preline";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import { useUser } from "Services/UserContext";
+import Loader from "Components/Loader";
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
@@ -10,16 +12,53 @@ declare global {
 }
 function Home() {
   const location = useLocation();
-  // const queryClient = useQueryClient()
+  const { user, setUser } = useUser();
+  const [isLoading, setIsLoadind] = useState(true);
+  const navigate = useNavigate();
 
-  // // Queries
-  // const query = useQuery({ queryKey: ['user'], queryFn: getTodos })
+  useEffect(() => {
+    // if (!isDataFetched) {
+    //   fetchProtectedResource();
+    // }
+    // fetchCounter();
+    setTimeout(() => {
+      setIsLoadind(false);
+    }, 2000);
+  }, []);
+  const { error, data } = useQuery({
+    queryKey: ["data"],
+    queryFn: async () => {
+      setIsLoadind(true);
+      try {
+        const response = await fetch("http://localhost:4000/", {
+          method: "GET",
+          credentials: "include",
+        });
+        if (!response.ok) {
+          navigate("/login");
+          setIsLoadind(false);
+        }
+        const data = await response.json();
+        setUser(true);
+        console.log(data);
+        return data;
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }
+    },
+  });
   useEffect(() => {
     window.HSStaticMethods.autoInit();
-  }, [location.pathname]);
+  }, [location.pathname, user]);
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (error) {
+    navigate("/404");
+  }
   return (
     <div className="container px-0 md:px-5 mt-4  md:mx-auto dark:text-white">
-      Home
+      {data["name"].toUpperCase()}
     </div>
   );
 }

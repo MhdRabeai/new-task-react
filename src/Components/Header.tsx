@@ -1,12 +1,26 @@
-import React, { FC } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { FC, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CiLogin } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
-type UserProps = {
-  user: boolean;
-};
+import { useUser } from "Services/UserContext";
 
-const Header: FC<UserProps> = ({ user }) => {
+const Header: FC = () => {
+  const { user, setUser } = useUser();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      const res = await fetch("http://localhost:4000/logout", {
+        credentials: "include",
+      });
+      if (res.ok) {
+        setUser(false);
+      }
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {}, [user]);
   return (
     <header className="sticky top-0 inset-x-0 flex flex-wrap justify-center md:flex-nowrap z-50 w-full text-sm mb-4">
       <nav className="mt-4 relative max-w-2xl w-full bg-white border border-gray-200 rounded-[2rem] mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto dark:bg-[#242424] dark:border-neutral-700">
@@ -187,7 +201,10 @@ const Header: FC<UserProps> = ({ user }) => {
               </div>
 
               {user === true ? (
-                <div className="logout cursor-pointer  text-gray-600 hover:text-[#991b1b] focus:outline-none  font-medium dark:text-[#b91c1c]  dark:hover:text-[#991b1b] ">
+                <div
+                  className="logout cursor-pointer  text-gray-600 hover:text-[#991b1b] focus:outline-none  font-medium dark:text-[#b91c1c]  dark:hover:text-[#991b1b] "
+                  onClick={handleLogout}
+                >
                   <CiLogin />
                 </div>
               ) : (
