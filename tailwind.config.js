@@ -6,7 +6,10 @@ module.exports = {
   },
   plugins: [
     // require('@tailwindcss/forms'),
-    require("@preline/strong-password"),
+    // require("@preline/strong-password"),
     require("preline/plugin"),
   ],
 };
+if (typeof self !== "undefined") {
+  require("@preline/strong-password");
+}

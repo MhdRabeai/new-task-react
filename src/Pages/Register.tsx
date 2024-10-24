@@ -126,7 +126,7 @@ const Register = () => {
                 <input
                   id="af-account-phone"
                   type="text"
-                  className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  className="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px rounded-lg   sm:mt-0 sm:first:ms-0   text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                   placeholder="+x(xxx)xxx-xx-xx"
                   name="phone"
                 />
@@ -148,7 +148,7 @@ const Register = () => {
                 <input
                   id="loccation"
                   type="text"
-                  className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                  className="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px rounded-lg   sm:mt-0 sm:first:ms-0   text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                   placeholder="Damascus-Syria"
                   name="location"
                 />
@@ -211,7 +211,7 @@ const Register = () => {
               <select
                 id="af-submit-app-category"
                 name="favLang"
-                className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                className="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px rounded-lg   sm:mt-0 sm:first:ms-0   text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
               >
                 <option value={""}>Select a Language</option>
                 <option value={"JavaScript"}>JavaScript</option>
@@ -282,6 +282,22 @@ const Register = () => {
             </div>
             <div className="sm:col-span-3">
               <label
+                htmlFor="favcolor"
+                className="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200"
+              >
+                Favcolor:
+              </label>
+            </div>
+            <div className="sm:col-span-9">
+              <input
+                type="color"
+                id="favcolor"
+                className="p-1 h-10 w-full block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
+                name="favcolor"
+              />
+            </div>
+            <div className="sm:col-span-3">
+              <label
                 htmlFor="af-account-bio"
                 className="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200"
               >
@@ -308,7 +324,7 @@ const Register = () => {
                   viewBox="0 0 16 16"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z"
                   ></path>
                   <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"></path>
@@ -326,34 +342,18 @@ const Register = () => {
                 htmlFor="detailes"
                 className="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200"
               >
-                BIO
+                Bio:
               </label>
             </div>
 
             <div className="sm:col-span-9">
               <textarea
                 id="detailes"
-                className="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                className="flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px rounded-lg   sm:mt-0 sm:first:ms-0   text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                 placeholder="Type your message..."
                 rows={3}
                 name="detailes"
               ></textarea>
-            </div>
-            <div className="sm:col-span-3">
-              <label
-                htmlFor="favcolor"
-                className="inline-block text-sm text-gray-800 mt-2.5 dark:text-neutral-200"
-              >
-                favcolor
-              </label>
-            </div>
-            <div className="sm:col-span-9">
-              <input
-                type="color"
-                id="favcolor"
-                className=" flex py-2 px-3 w-full border border-gray-200 shadow-sm -mt-px -ms-px rounded-lg   sm:mt-0 sm:first:ms-0   text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                name="favcolor"
-              />
             </div>
           </div>
 
