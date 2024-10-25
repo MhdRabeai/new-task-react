@@ -3,13 +3,13 @@ import { Outlet } from "react-router-dom";
 import Header from "../Components/Header";
 import Loader from "../Components/Loader";
 // import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { UserProvider } from "Services/UserContext";
 
 const Layout = () => {
   const [isUser, setIsUser] = useState(false);
   const [isLoading, setIsLoadind] = useState(true);
-  const [isDataFetched, setIsDataFetched] = useState(false);
+  // const [isDataFetched, setIsDataFetched] = useState(false);
   // const navigate = useNavigate();
 
   useEffect(() => {

@@ -99,6 +99,7 @@ const Login = () => {
                   placeholder="Mhd..."
                   name="name"
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -121,6 +122,7 @@ const Login = () => {
                   placeholder="Enter password"
                   name="password"
                   onChange={handleChange}
+                  required
                 />
                 <button
                   className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-600 m-0 z-50"
